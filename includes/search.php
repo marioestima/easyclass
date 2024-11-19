@@ -66,23 +66,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
     </div>
 
-    <div class="intro" id="introMessage" <?php echo empty($materials) ? 'block' : 'none'; ?>;">
-        <h2>Procura por algo? Pesquise aqui o que deseja. 🔍</h2>
-    </div>
-
-    <script>
-        const resultsContainer = document.getElementById('resultsContainer');
-        const introMessage = document.getElementById('introMessage');
-        const searchForm = document.querySelector('.search-form');
-
-        searchForm.addEventListener('submit', (event) => {
-            if (resultsContainer.innerHTML.trim() !== "") {
-                introMessage.style.display = 'none';
-                resultsContainer.style.display = 'block';
-            } else {
-                resultsContainer.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>

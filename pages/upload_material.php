@@ -10,14 +10,12 @@
 <body>
 
     <div class="nav">
-        
         <div class="back-button_container">
             <a href="../pages/dashboard.php" class="back-button"><img src="../icons/back-right.svg"
             style="width:1rem; height: 2rem;"></a>
         </div>
           
  
-
        <div class="form-container">
                 <form action="../includes/upload.php" method="POST" enctype="multipart/form-data">
                     <h2>Upload de Arquivos</h2>
@@ -29,11 +27,12 @@
 
 
                     <div class="upload-area">
-                        <input id="file" type="file" name="files[]" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png"  onchange="handleFiles(this.files)" muliple required>
+                        <input id="file" type="file" name="files[]" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png"  onchange="handleFiles(this.files)" multiple required>
                     </div>
 
                     <div class="file-list" id="fileList"></div>
                     <button type="submit" class="upload-button">Fazer Upload🗂️</button>
+
                 </form>
         </div>
         <script>
