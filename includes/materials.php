@@ -6,10 +6,10 @@ include('includes/db_connect.php');
 
 
 $materials = []; 
-$one = 1; // Se você deseja filtrar por um ID específico ou outra condição
+$one = 1;
 
-// Aqui você deve definir uma condição válida para a consulta
-$query = "SELECT * FROM `Materias` WHERE id = ?"; // Exemplo de condição
+
+$query = "SELECT * FROM `Materias` WHERE id = ?"; 
 $stmt = $conn->prepare($query);
 
 if ($stmt === false) {
