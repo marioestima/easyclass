@@ -1,6 +1,6 @@
 <?php 
 
-include('includes/db_connect.php');
+include("includes/db_connect.php");
 
 function insertData($conn, $title, $description, $fileName) {
     $stmt = $conn->prepare("INSERT INTO `Materias` (title, description, archive, data_upload) VALUES (?, ?, ?, NOW())");
@@ -23,11 +23,12 @@ function insertData($conn, $title, $description, $fileName) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = htmlspecialchars(trim($_POST['title']));
     $description = htmlspecialchars(trim($_POST['description']));
-    
+
     $uploadDir = 'uploads/';
     
     if (!empty($_FILES['files']['name'][0])) {
         foreach ($_FILES['files']['name'] as $key => $file_name) {
+            
             $file_tmp_name = $_FILES['files']['tmp_name'][$key];
             $file_size = $_FILES['files']['size'][$key];
             $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));

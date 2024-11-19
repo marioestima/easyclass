@@ -1,0 +1,4 @@
+function SearchActivity() {
+
+    //code here.
+}

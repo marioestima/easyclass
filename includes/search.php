@@ -61,8 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </li>
                 <?php endforeach; ?>
             </ul>
+            
         <?php else: ?>  
-                <div class="response-message"><h1>Nenhum material encontrado. 🤔</h1></div>
+                <div class="response-message" style="display: flex;"><h1>Nenhum material encontrado. 🤔</h1></div>
         <?php endif; ?>
     </div>
 

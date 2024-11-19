@@ -1,14 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-:root {
-    --color-white: #fff;
-    --border-radius: 10px;
-    --danger-color: rgba(233, 29, 29, 0.945);
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -16,26 +12,25 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
-}
 
+    background-image: url(image/mulher-afro-americana-feliz-e-despreocupada-com-penteado-encaracolado-desfrutando-de-uma-otima-companhia-rindo-alto-e-se-divertindo-mostrando-um-sinal-de-ok-ou-perfeito-com-os-dedos-circulados_176420-23227.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
 
 .container {
     background-color: #fff;
     border-radius: 30px;
-    box-shadow: 0 2rem 3rem rgba(103, 107, 139, 0.2); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    transition: all 0.3s ease;
-    margin: 10px;
-    z-index: 0;
-}
-
-.container:hover {
-    box-shadow: none;
+    
 }
 .container p {
     font-size: 14px;
@@ -138,6 +133,21 @@ body {
     }
 }
 
+.social-icons {
+    margin: 20px 0; 
+}
+
+.social-icons a{
+    border: 1px solid #ccc;
+    border-radius: 28%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+}
+
 
 .toggle-container {
     position: relative;
@@ -160,7 +170,7 @@ body {
 .toggle {
     background-color: #1522d3b4;
     height: 100%;
-    background: linear-gradient(to right, #1931ce, #7549dd);
+    background: linear-gradient(to right, #5c6bc8, #512da8);
     color: #fff;
     position: absolute;
     left: -100%;
@@ -205,4 +215,5 @@ body {
 .container.active .toggle-right {
     transform: translateX(200%);
 }
+
 
