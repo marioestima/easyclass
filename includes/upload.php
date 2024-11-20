@@ -38,9 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $uniqueName = uniqid() . '.' . $file_ext;
                 $uploadFile = $uploadDir . $uniqueName;
 
-                // insertData($conn, $title, $description, $uniqueName);
+                move_uploaded_file($file_tmp_name, $uploadFile);
 
                 if (move_uploaded_file($file_tmp_name, $uploadFile)) {
+                    insertData($conn, $title, $description, $file_name);
+                    
                     echo "<p class='success'>Arquivo " . htmlspecialchars($file_name) . " enviado com sucesso!</p>";
                 } else {
                     echo "<p class='danger'>Erro ao mover o arquivo: " . htmlspecialchars($file_name) . ".</p>";

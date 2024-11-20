@@ -15,7 +15,6 @@ body {
     flex-direction: column;
     height: 100vh;
 
-    background-image: url(image/mulher-afro-americana-feliz-e-despreocupada-com-penteado-encaracolado-desfrutando-de-uma-otima-companhia-rindo-alto-e-se-divertindo-mostrando-um-sinal-de-ok-ou-perfeito-com-os-dedos-circulados_176420-23227.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
@@ -215,5 +214,6 @@ body {
 .container.active .toggle-right {
     transform: translateX(200%);
 }
+
 
 

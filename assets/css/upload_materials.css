@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vw;
     background-color: #edf2f7;
 }
 
@@ -31,8 +31,10 @@ body {
 }
 
 .back-button {
-    padding: 0.5rem;
-    background-color: #439bff7e;
+    padding: 10px 20px;
+    width: 4rem;
+    margin-left: 1rem;
+    background-color: #0077ff;
     color: white;
     text-decoration: none;
     border-radius: var(--card-border-radius);
@@ -50,7 +52,8 @@ body {
 .form-container {
     background-color: var(--card-bg-color);
     padding: 2rem 4rem;
-    width: 40rem;
+    width: 60rem;
+    margin-left: 10rem;
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
     text-align: center;
@@ -115,13 +118,20 @@ input[type='file'] {
 }
 
 .file-list button {
-    padding: 0.3rem 0.5rem;
-    background-color: #e53e3e;
-    color: white;
-    border: none;
-    border-radius: 6px;
+    display: flex;
+    top: -1px;
+    right: -20px;
+    width: 4%;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #f30b0b;
+    color: #fff;
+    font-size: 20px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background 0.3s ease;
 }
 
 .file-list button:hover {

@@ -23,7 +23,7 @@
                     <div class="logo">
                         <image src="../images/logo.png">
                             <a href="<?php echo" ../pages/dashboard.php";?>"><h2>Easy<span class="danger">Class</span>
-                                </h2></a>
+                            </h2></a>
                     </div>
                     <div class="close" id="close-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -182,7 +182,7 @@
                         </tbody>
                     </table>
 
-                    <a style="font-weight: bold;" href="../pages/materials.php">Mostrar Tudo</a>
+                    <a style="font-weight: bold;" href="../pages/my_materials.php">Mostrar Tudo</a>
                 </div>
             </main>
 

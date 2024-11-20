@@ -43,7 +43,7 @@
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
                     const listItem = document.createElement('p');
-                    listItem.innerHTML = `${file.name} <button class="remove">remover</button>`;
+                    listItem.innerHTML = `${file.name} <button class="remove">X</button>`;
                     fileList.appendChild(listItem);
                 }
             }
