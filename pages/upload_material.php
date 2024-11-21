@@ -25,7 +25,6 @@
                     <label for="description">Por favor, coloque uma descrição referente ao Material</label>
                     <textarea name="description" id="my-text-area" required></textarea>
 
-
                     <div class="upload-area">
                         <input id="file" type="file" name="files[]" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png"  onchange="handleFiles(this.files)" multiple required>
                     </div>

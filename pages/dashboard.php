@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="../assets/css/dashboard.css">
         <title>Painel de Controle</title>
     </head>
-
     <body id="bdy">
 
         <div class="container">
@@ -38,8 +37,6 @@
                     </div>
 
                 </div>
-
-
                 <div class="sidebar">
                     <a>
                         <button>
@@ -275,5 +272,4 @@
         <script src="../js/active.js"></script>
         <script src="../js/showprofile.js"></script>
     </body>
-
 </html>
