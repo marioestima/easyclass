@@ -38,12 +38,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <a href="../pages/upload_material.php" class="nav-link">Upload 📂</a>
 
-        <form method="POST" class="search-form">
-            <input type="text" name="search" placeholder="Pesquisar..." id="searchInput" required>
-            <button type="submit" class="search-button">
-                <img src="../icons/search.png" alt="Pesquisar">
-            </button>
-        </form>
+        <div id="container">
+      <div class="input-group">
+        <div class="input-icon">
+          <img src="images/search.png" alt="imagem não carregou... :(" />
+        </div>
+
+        <input
+          type="text"
+          id="search"
+          class="input-field"
+          placeholder="Pesquisar"
+        />
+      </div>
+
+      <ul class="items">
+        <li class="list-items">
+
+        </li>
+      </ul>
+    </div>
     </nav>
 
     <div class="results-container" id="results-container" style="diplay: none;">

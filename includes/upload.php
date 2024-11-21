@@ -1,6 +1,23 @@
 <?php 
 
-include("includes/db_connect.php");
+include("db_connect.php");
+
+function insertData($conn, $titule, $description, $fileName) {
+    $stmt = $conn->prepare("INSERT INTO `Materias` (titule, description, archive, data_upload) VALUES (?, ?, ?, NOW())");
+    
+    if ($stmt) {
+        $stmt->bind_param("sss", $titule, $description, $fileName);   
+        if ($stmt->execute()) {
+            echo "<p class='success'>Material Enviado com sucesso.</p>";
+        } else {
+            echo "<p class='danger'>Falha ao Enviar o Material " . $stmt->error . "</p>";
+        }
+ 
+        $stmt->close();
+    } else {
+        echo "<p class='danger'>Erro ao preparar a consulta: " . $conn->error . "</p>";
+    }
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = htmlspecialchars(trim($_POST['title']));
