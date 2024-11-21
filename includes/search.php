@@ -7,10 +7,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $search = trim($_POST['search']);
         $searchTerm = "%$search%";
 
-        $query = "SELECT * FROM `Materias` WHERE titule LIKE ? OR description LIKE ?";
-        $stmt = $conn->prepare($query); $stmt->bind_param("ss", $searchTerm,
-$searchTerm); $stmt->execute(); $result = $stmt->get_result(); while ($row =
-$result->fetch_assoc()) { $materials[] = $row; } } } ?>
+        $query = "SELECT * FROM `Materias` WHERE titule LIKE ? OR description OR data_upload LIKE  NOW() ";
+        $stmt = $conn->prepare($query); 
+        $stmt->bind_param("ssi", $searchTerm,$searchTerm);
+        $stmt->execute(); 
+        $result = $stmt->get_result(); 
+        while ($row=$result->fetch_assoc()) 
+        { 
+          $materials[] = $row; 
+        } 
+      } 
+  } 
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -30,12 +38,12 @@ $result->fetch_assoc()) { $materials[] = $row; } } } ?>
 
       <a href="../pages/upload_material.php" class="nav-link">Upload 📂</a>
 
-      <div id="container">
+      <div class="container" id="container">
         <div class="input-group">
-          <div class="input-icon">
-            <img src="images/search.png" alt="imagem não carregou... :(" />
-          </div>
 
+          <div class="input-icon">
+            <img src="../images/search.png" />
+          </div>
           <input
             type="text"
             id="search"
@@ -43,14 +51,10 @@ $result->fetch_assoc()) { $materials[] = $row; } } } ?>
             placeholder="Pesquisar"
           />
         </div>
-
-        <ul class="items">
-          <li class="list-items"></li>
-        </ul>
       </div>
     </nav>
 
-    <div class="results-container" id="results-container" style="diplay: none">
+    <div class="results-container" id="results-container"">
       <?php if (!empty($materials)): ?>
       <h2>
         Resultados da busca para "<?php echo htmlspecialchars($search); ?>"
@@ -65,6 +69,11 @@ $result->fetch_assoc()) { $materials[] = $row; } } } ?>
           <p>
             <strong>Descrição:</strong>
             <?php echo htmlspecialchars($material['description']); ?>
+          </p>
+
+          <p>
+            <strong>Data de Emição:</strong>
+            <? echo htmlspecialchars($material['date']);?>
           </p>
 
           <button class="see-details">
