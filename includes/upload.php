@@ -12,18 +12,23 @@ function insertData($conn, $titule, $description, $fileName) {
         } else {
             echo "<p class='danger'>Falha ao Enviar o Material " . $stmt->error . "</p>";
         }
- 
+        
         $stmt->close();
     } else {
         echo "<p class='danger'>Erro ao preparar a consulta: " . $conn->error . "</p>";
     }
 }
 
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = htmlspecialchars(trim($_POST['title']));
     $description = htmlspecialchars(trim($_POST['description']));
 
     $uploadDir = '/opt/lampp/htdocs/easyclass/uploads/';
+    $pdfUploadDir =  '/opt/lampp/htdocs/easyclass/uploads/pdf/';
+    $other =  '/opt/lampp/htdocs/easyclass/uploads/pdf/other';
+
     
     if (!empty($_FILES['files']['name'][0])) {
         foreach ($_FILES['files']['name'] as $key => $file_name) {
@@ -36,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (in_array($file_ext, $allowed_exts) && $file_size <= 10 * 1024 * 1024) { 
                 $uniqueName = uniqid() . '.' . $file_ext;
                 $uploadFile = $uploadDir . $uniqueName;
+
 
                 if (move_uploaded_file($file_tmp_name, $uploadFile)) {
                     insertData($conn, $title, $description, $file_name);

@@ -35,7 +35,7 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: var(--color-bg);
   width: 100%;
   padding: 1.2rem 1rem;
@@ -86,106 +86,105 @@ body {
   border-radius: 50%;
 }
 
-.container .input-group {
+.navbar .container .input-group {
   display: flex;
   align-items: center;
   background-color: #ffffff9d;
   padding: 8px 50px 8px 8px;
   border-radius: 24px;
   gap: 8px;
+}
+.container .input-group .input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  min-height: 32px;
+  min-width: 32px;
+  background-color: #6046ff;
+}
 
-  .input-group .input-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
-    min-height: 32px;
-    min-width: 32px;
-    background-color: #6046ff;
+.container .input-field {
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.container .input-field:focus {
+  outline: none;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  background-color: var(--color-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin: 5rem 0;
+}
+
+.results-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.results-container li {
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #fafafa;
+  transition: box-shadow 0.3s ease;
+}
+
+.results-container li:hover {
+  box-shadow: var(--box-shadow);
+}
+
+.results-container a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.results-container .see-details {
+  padding: 0.5rem 1.5rem;
+  font-family: "Poppins", sans-serif;
+  border-radius: 5px;
+  margin: 1rem 0;
+  border: none;
+  color: white;
+  background: linear-gradient(to right, #007bff, #5a5ae7);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.results-container .see-details:hover {
+  background: linear-gradient(to right, #0056b3, #3a3ab8);
+}
+
+@media (max-width: 780px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 1rem;
   }
 
-  .container .input-field {
-    width: 100%;
-    border: none;
-    background: transparent;
-  }
-
-  .container .input-field:focus {
-    outline: none;
+  .search-form input[type="text"] {
+    width: 15rem;
+    font-size: 14px;
   }
 
   .results-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 1rem;
-    background-color: var(--color-bg);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    margin: 5rem 0;
+    width: 95%;
+    padding: 1.5rem;
   }
 
-  .results-container ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 1rem 0;
-  }
-
-  .results-container li {
-    padding: 1rem;
-    margin: 1rem 0;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    background-color: #fafafa;
-    transition: box-shadow 0.3s ease;
-  }
-
-  .results-container li:hover {
-    box-shadow: var(--box-shadow);
-  }
-
-  .results-container a {
-    text-decoration: none;
-    color: var(--color-primary);
-    font-weight: bold;
-  }
-
-  .results-container .see-details {
-    padding: 0.5rem 1.5rem;
-    font-family: "Poppins", sans-serif;
-    border-radius: 5px;
-    margin: 1rem 0;
-    border: none;
-    color: white;
-    background: linear-gradient(to right, #007bff, #5a5ae7);
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .results-container .see-details:hover {
-    background: linear-gradient(to right, #0056b3, #3a3ab8);
-  }
-
-  @media (max-width: 780px) {
-    .navbar {
-      flex-wrap: wrap;
-      padding: 1rem;
-    }
-
-    .search-form input[type="text"] {
-      width: 15rem;
-      font-size: 14px;
-    }
-
-    .results-container {
-      width: 95%;
-      padding: 1.5rem;
-    }
-
-    .intro {
-      margin: 2rem 0;
-    }
+  .intro {
+    margin: 2rem 0;
   }
 }

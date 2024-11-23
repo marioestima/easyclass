@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $query = "SELECT * FROM `Materias` WHERE titule LIKE ? OR description OR data_upload LIKE  NOW() ";
         $stmt = $conn->prepare($query); 
-        $stmt->bind_param("ssi", $searchTerm,$searchTerm);
+        $stmt->bind_param("ss", $searchTerm,$searchTerm);
         $stmt->execute(); 
         $result = $stmt->get_result(); 
         while ($row=$result->fetch_assoc()) 
@@ -40,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <div class="container" id="container">
         <div class="input-group">
-
-          <div class="input-icon">
-            <img src="../images/search.png" />
+          <div class="input-icon" onclick="buttonSubmitted();" style="cursor: pointer;">
+              <img src="../images/search.png" />
           </div>
+
           <input
             type="text"
             id="search"
@@ -80,8 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a
               style="color: #fff"
               href="seeDetails.php?id=<?php echo $material['id']; ?>"
-              >Ver detalhes</a
-            >
+              >Ver detalhes</af>
           </button>
         </li>
         <?php endforeach; ?>
