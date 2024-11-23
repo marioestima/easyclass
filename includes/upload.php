@@ -25,10 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = htmlspecialchars(trim($_POST['title']));
     $description = htmlspecialchars(trim($_POST['description']));
 
-    $uploadDir = '/opt/lampp/htdocs/easyclass/uploads/';
-    $pdfUploadDir =  '/opt/lampp/htdocs/easyclass/uploads/pdf/';
-    $other =  '/opt/lampp/htdocs/easyclass/uploads/pdf/other';
-
+    $uploadDir = '/opt/lampp/htdocs/easyclass/uploads/Material/';
     
     if (!empty($_FILES['files']['name'][0])) {
         foreach ($_FILES['files']['name'] as $key => $file_name) {

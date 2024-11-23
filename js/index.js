@@ -7,8 +7,6 @@ const bd = document.getElementById("bdy");
 //#TODO as datas de acordo com data do upload
 var nowDate = new Date();
 
-
-
 if (menuBtn) {
     menuBtn.addEventListener("click", () => {
         sideMenu.style.display = "block";
