@@ -1,5 +1,25 @@
 <?php
-    include("includes/materials.php")
+
+    include("../includes/db_connect.php");
+
+    $materials = []; 
+    $one = 1;
+    $query = "SELECT * FROM `Materias` WHERE id = ?"; 
+    $stmt = $conn->prepare($query);
+    
+    if ($stmt === false) {
+        die('Erro na preparação da consulta: ' . htmlspecialchars($conn->error));
+    }
+    
+    $stmt->bind_param('i', $one); 
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $materials[] = $row;
+        }
+    } else {
+        echo "<h1 class='danger'>Nenhum resultado encontrado.🤨</h1>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,7 +36,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>data</th>
                         <th>Título</th>
                         <th>Descrição</th>
                         <th>Ação</th>
@@ -25,11 +45,11 @@
                 <tbody>
                     <?php foreach ($materials as $material): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($material['id']); ?></td>
-                            <td><?php echo htmlspecialchars($material['title']); ?></td>
+                            <td><?php echo htmlspecialchars($material['data_upload'])?></td>
+                            <td><?php echo htmlspecialchars($material['titule']); ?></td>
                             <td><?php echo htmlspecialchars($material['description']); ?></td>
                             <td>
-                                <a href="download.php?id=<?php echo $material['id']; ?>">Baixar</a> <!-- Link para download -->
+                                <a href="download.php?id=<?php echo $material['id']; ?>">Baixar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

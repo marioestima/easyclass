@@ -1,17 +1,20 @@
 <?php
-require("db_connect.php");
+
+include("../includes/db_connect.php");
 $materials = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['search_term'])) {
         $search = trim($_POST['search_term']);
-        $searchTerm = "%$search%";
+        $searchTerm = "%".trim($search)."%";
 
+        // Alteração da consulta para usar LIKE em vez de = para flexibilidade na busca
         $query = "SELECT * FROM `Materias` WHERE titule LIKE ? OR description LIKE ? OR data_upload = CURDATE()";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("ss", $searchTerm, $searchTerm);
         $stmt->execute();
         $result = $stmt->get_result();
+        
         while ($row = $result->fetch_assoc()) {
             $materials[] = $row;
         }

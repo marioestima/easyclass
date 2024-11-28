@@ -53,7 +53,7 @@ body {
     background-color: var(--card-bg-color);
     padding: 2rem 4rem;
     width: 60rem;
-    margin-left: 10rem;
+    margin-left: 15rem;
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
     text-align: center;

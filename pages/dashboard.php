@@ -1,6 +1,6 @@
 <?php 
-    include("/login_register.php");
-    include("includes/data.php")
+session_start();
+include("../includes/data.php")
 ?>
 
 <!DOCTYPE html>
@@ -15,15 +15,50 @@
         <link rel="stylesheet" href="../assets/css/dashboard.css">
         <title>Painel de Controle</title>
     </head>
+
+    <style>
+        /* Estilos para o botão de logout */
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 2px solid #dc3545;
+    border-radius: 25px;
+    background-color: #dc3545;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.logout-icon {
+    width: 18px; /* Ajuste o tamanho do ícone conforme necessário */
+    margin-right: 8px;
+}
+
+.logout-btn span {
+    font-size: 14px;
+}
+
+    </style>
     <body id="bdy">
 
         <div class="container">
             <aside id="aside">
-
                 <div class="toggle">
-
                     <div class="logo">
-                        <image src="../images/logo.png">
+                        <img src="../images/logo.png">
                         <a href="<?php echo" ../pages/dashboard.php";?>"><h2>Easy<span class="danger">Class</span></a>
                     </div>
 
@@ -76,14 +111,6 @@
                             <img src="../icons/share.svg">
                         </button>
                         <h3>Reportar</h3>
-                    </a>
-
-                    <a href="../logout.php">
-                        <button>
-                            <img src="../icons/saida.svg">
-                        </button>
-
-                        <h3>Sair</h3>
                     </a>
                 </div>
             </aside>
@@ -169,13 +196,17 @@
                         </thead>
 
                         <tbody>
-                            <?php foreach($datas as $data):?>
-                                <tr><?php echo htmlspecialchars($material['name'])?></tr>
-                                <tr><?php echo htmlspecialchars($material['curso'])?></tr>
-                                <tr><?php echo htmlspecialchars($material['dispciplina'])?></tr>
-                                <tr><?php echo htmlspecialchars($material['date_upload'])?></tr>
-                            <?php endforeach; ?>
+                            <?php foreach($datas as $data): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($data['titule']);?></td>
+                                    <td>Informatica</td>
+                                    <td>Seac</td>
+                                    <td><?php echo htmlspecialchars($data['data_upload']);?></td>
+                                    <td class="primary">ver detalhes</td>
+                                    </tr>
+                             <?php endforeach; ?>
                         </tbody>
+
                     </table>
                     <a style="font-weight: bold;" href="../pages/materials.php">Mostrar Tudo</a>
                 </div>
@@ -191,12 +222,26 @@
                             </div>
 
                             <div class="modal-body">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quisquam recusandae rem? Adipisci maiores rem hic quam fugiat aliquam dolore eos, optio temporibus similique assumenda ab voluptatem. Rem, quis ea!
+                                <div class="info">
+                                    <p>Olá,</p>
+                                    <small class="text-muted">
+                                        <b>
+                                            <?php htmlspecialchars($_SESSION['userLogged']); ?>
+                                        </b>
+                                    </small>
+                                </div>
                             </div>
 
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary"><a href="profile.php" color="white";
+                                >ver mais Informações</a></button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary">Save changes</button>
+
+                                <a href="../logout.php" class="btn btn-danger btn-sm logout-btn">
+                                    <img src="../icons/saida.svg" alt="Logout" class="logout-icon">
+                                    <span>Sair</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -218,18 +263,11 @@
                             dark_mode
                         </span>
                     </div>
-                    <div class="profile" id="profile-section">
-                        <div class="info">
-                            <p>Hey</p>
-                            <small class="text-muted">
-                                <b>
-                                    <?= htmlspecialchars($_SESSION['userLogged']); ?>
-                                </b>
-                            </small>
-                        </div>
 
+                
+                    <div class="profile" id="profile-section">
                         <div class="profile-photo" style="cursor: pointer;"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <image src="../images/i_.jpeg">
+                            <img src="../images/i_.jpeg">
                         </div>
                     </div>
                 </div>
@@ -286,8 +324,8 @@
         </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/index.js"></script>
-    <script src="../js/active.js"></script>
-    <script src="../js/showprofile.js"></script>
+    <script src="../assets/js/index.js"></script>
+    <script src="../assets/js/active.js"></script>
+    <script src="../assets/js/showprofile.js"></script>
     </body>
 </html>

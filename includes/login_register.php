@@ -1,10 +1,11 @@
 <?php
-session_start();
-include("db_connect.php");
+    session_start();
+    include("db_connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if ($_POST['action'] === 'register') {
+        
         $username = trim($_POST['name']);
         $pass = trim($_POST['senha']);
         $email = trim($_POST['email']);
@@ -61,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $row = $result->fetch_assoc();
             if (password_verify($pass, $row['senha'])) {
                 $_SESSION['userLogged'] = $row['name'];
+                $_SESSION['userId'] = $row['id'];
                 header("Location: pages/dashboard.php");
                 exit();
             } else {
