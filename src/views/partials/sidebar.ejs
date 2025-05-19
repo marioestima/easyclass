@@ -1,0 +1,106 @@
+<aside class="sidebar">
+    <div class="menu">
+        <h1>Menu</h1>
+        <div class="menu-container">
+            <ul class="menu-items">
+                <li class="active">
+                    <a href="#">Materias</a>
+                    <i class="fas fa-book-open-reader"></i>
+                </li>
+
+                <li class="item send-material-button">
+                    <a href="#">Enviar Matéria </a>
+                    <i class="fas fa-upload"></i>
+                </li>
+
+                <li class="item join-class-button">
+                    <a href="#">Juntar a turma </a>
+                    <i class="fas fa-school-circle-check"></i>
+                </li>
+
+                <li class="item settings">
+                    <a href="#">Definições</a>
+                    <i class="fas fa-layer-group"></i>
+                </li>
+
+                <li class="logout">
+                    <a href="#">terminar sessao</a>
+                    <i class="fas fa-arrow-right-from-bracket"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="logOutAlert spawnAnimation alerted">
+        <span class="alert">
+            <p>Já se vai embora, ainda a muito por passar! 🧠</p>
+        </span>
+
+        <div class="alert-body">
+            <p>Tem a Certeza que deseja mesmo Sair?</p>
+            <div class="alert-buttons">
+                <button class="continueBtn">continuar a passar</button>
+                <button class="outBtn">Tenho a certeza!</button>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="side send-material hidden cardAnimation">
+        <div class="form-content">
+            <h2>Enviar Materia</h2>
+            <span class="close-send-material">
+                <i class="fas fa-xmark"></i>
+            </span>
+
+            <form id="material-form">
+                <div class="inputs">
+                    <div class="form-group">
+                        <label for="sumario">sumario</label>
+                        <input type="text" placeholder="sumario" />
+                    </div>
+                    <div class="form-group">
+                        <label for="sumario">disciplina</label>
+                        <input type="text" placeholder="disciplina" />
+                    </div>
+                    <div class="form-group">
+                        <label for="sumario">digite uma nota descritiva sobre a aula</label>
+                        <textarea type="text" placeholder="nota descritiva"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <h2>Envie fotos e ficheiros referentes a aula</h2>
+                        <label for="sumario"></label>
+                        <input type="file" placeholder="nota descritiva" />
+                    </div>
+                </div>
+
+                <button type="submit">enviar Material <i class="fas fa-check-double"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <section class="side join-class hidden cardAnimation">
+        <div class="form-content">
+            <h2>Junte-se a uma turma</h2>
+
+            <span class="close-join-class">
+                <i class="fas fa-xmark"></i>
+            </span>
+            <form id="join-class-form" id="join-class-form">
+                <div class="inputs">
+                    <div class="form-group">
+                        <label for="nome turma">nome turma</label>
+                        <input type="text" placeholder="nome da turma" />
+                    </div>
+                    <div class="form-group">
+                        <label for="link">invite link | link da turma - opcional</label>
+                        <input type="text" placeholder="link da turma" />
+                    </div>
+                </div>
+
+                <button type="submit">Juntar-me <i class="fas fa-check-double"></i></button>
+            </form>
+        </div>
+    </section>
+</aside>

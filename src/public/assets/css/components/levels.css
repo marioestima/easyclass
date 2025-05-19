@@ -1,0 +1,94 @@
+.user-level .levels {
+    display: flex;
+    gap: 40px;
+}
+
+.user-level .levels .level {
+    background: #fff;
+    padding: 50px 90px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.171);
+    transition: all .4s ease;
+}
+
+.user-level .levels .level .icon {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.user-level .levels .level .icon i {
+    font-size: 80px;
+    color: var(--text-color);
+}
+
+.user-level .levels .level h2 {
+    font-size: 18px;
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-level .levels .level:hover {
+    transform: translateY(-20px);
+}
+
+
+.form-step {
+    display: none;
+}
+
+.form-step p {
+    font-size: 18pt;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    display: block;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    width: auto;
+    border-radius: 0.4rem;
+    background: #141414;
+    cursor: pointer;
+    color: #fff;
+    font-size: var(--xs-font);
+    font-weight: var(--font-weight-3);
+    transition: all .3s ease;
+}
+
+.form-buttons button:hover {
+    background-color: #3b3a3b;
+}
+
+.user-level .levels {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.level {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.level:hover {
+    border-color: #3b3a3b;
+}
+
+

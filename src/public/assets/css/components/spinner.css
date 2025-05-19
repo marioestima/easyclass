@@ -1,0 +1,29 @@
+.spinner-grow.hidden {
+    display: none;
+}
+
+.d-none {
+    display: none;
+}
+
+.spinner-grow {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    vertical-align: -0.125em;
+    animation: spin 0.75s linear infinite;
+    border-radius: 50%;
+    border: 0.25em solid #fff;
+    border-right-color: transparent;
+    border-width: 0.25em;
+}
+
+.visually-hidden {
+    opacity: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

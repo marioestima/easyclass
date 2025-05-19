@@ -1,0 +1,465 @@
+@import "./global.css";
+@import "./components/homenav.css";
+@import "./components/sidebar.css";
+@import "./components/spinner.css";
+
+main {
+    position: relative;
+    margin: 0px;
+    height: 100vh;
+    width: 100%;
+}
+
+main .materias-container {
+    display: flex;
+    margin-top: 110px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    height: 100%;
+}
+
+@media (max-width:800px) {
+    main {
+ 
+    }
+
+    main .materias-container {
+        width: 100%;
+ 
+        margin: initial !important;
+        overflow-x: hidden;
+        padding-top: 100px;
+    }
+}
+
+main .materias-container .container {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 15px;
+    border-radius: 20px;
+    padding-top: 300px;
+    padding-bottom: 120px;
+}
+
+@media (max-width: 1110px) and (max-width:800px) {
+    main .materias-container .container {
+        grid-template-columns: 1fr;
+  
+        width: 100%;
+    }
+}
+
+main .materias-container .container .my-material-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+}
+
+.my-material-card .buttons {
+    display: flex;
+    gap: 90px;
+}
+
+.my-material-card .buttons button {
+    display: flex;
+    padding: 10px 12px;
+    gap: 10px;
+    border-radius: 5px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    align-self: start;
+    background: #141414;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.my-material-card .buttons button:hover,
+.my-material-card .buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #424040, 0 0 0 4px #141414;
+}
+
+@media (max-width: 800px) {
+    .my-material-card .buttons button {
+        width: 100%;
+        border-radius: 50px;
+    }
+
+    .my-material-card .buttons button.comment-btn {
+        display: none;
+    }
+}
+
+.my-material-card .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.materia-informacao {
+    align-self: start;
+    margin: 5px 0px 10px 0px;
+    color: var(--text-color);
+
+}
+
+.materia-informacao p {
+    line-height: 1;
+    font-size: 15px;
+    font-weight: var(--font-weight-4);
+    color: var(--text-color);
+}
+
+
+@media (max-width:800px) {
+    main .materias-container .container .my-material-card {
+        margin: 0 auto;
+        width: 100%;
+        background: initial !important;
+        box-shadow: initial;
+    }
+}
+
+
+.close-send-material,
+.close-join-class {
+    position: relative;
+    width: 100%;
+}
+
+
+.close-send-material i,
+.close-join-class i {
+    position: absolute;
+    right: -15px;
+    bottom: 0;
+    margin-right: 10px;
+    margin-top: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 2px 4px;
+    transition: all .3s ease;
+}
+
+.close-send-material i:hover,
+.close-join-class i:hover {
+    background-color: #eee;
+    color: #fa4e41;
+
+}
+
+.join-class,
+.send-material {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: #fff;
+    top: 0;
+    left: 310px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.send-material.hidden,
+.join-class.hidden,
+.create-class.hidden {
+    display: none;
+}
+
+.send-material .form-content,
+.create-class .form-content,
+.join-class .form-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 5px 10px;
+    z-index: 10;
+    background: #fff;
+    top: 0px;
+    left: 10px;
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    z-index: 10px;
+}
+
+.create-class .form-content .close-x {
+    position: relative;
+    width: 100%;
+    background-color: var(--danger-color);
+}
+
+.create-class .form-content .close-x i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 2px 4px;
+    transition: all .3s ease;
+}
+
+
+.logOutAlert.alerted {
+    display: none;
+}
+
+.logOutAlert {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 50px;
+    z-index: 10;
+    background: #fff;
+    top: 200px;
+    left: 400px;
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    z-index: 10px;
+}
+
+.logOutAlert .alert {
+    align-self: flex-start;
+
+}
+
+.logOutAlert .alert p {
+    font-size: 20pt;
+    margin-bottom: 10px;
+    font-weight: 900;
+    color: var(--text-color);
+}
+
+.logOutAlert .alert-body {
+    margin-top: 10px;
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logOutAlert .alert-body .alert-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.logOutAlert .alert-body .alert-buttons button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    background: var(--default-color);
+
+}
+
+.logOutAlert .alert-body .alert-buttons button.outBtn {
+    background: var(--danger-color);
+
+}
+
+.logOutAlert .alert-body p {
+    font-size: 16pt;
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.send-material .form-content h2 {
+    text-align: center;
+    font-size: 20px;
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+.send-material .form-content .inputs {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.inputs .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.inputs .form-group input,
+textarea {
+    border: 2px solid #ddd;
+    width: 100%;
+    border-radius: var(--normal-border-radius);
+    padding: var(--normal-padding);
+    font-size: var(--xl-font);
+    font-weight: var(--font-weight-2);
+    outline-color: var(--default-color);
+    transition: all .3s ease;
+}
+
+
+
+.inputs .form-group label {
+    font-size: var(--xs-font);
+    color: var(--text-color);
+    font-weight: var(--font-weight-3);
+    margin-bottom: 10px;
+}
+
+#material-form button,
+#join-class-form button,
+#create-class-form button {
+    border: none;
+    padding: 10px 10px;
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: var(--default-color);
+    cursor: pointer;
+    color: #fff;
+    font-size: var(--xs-font);
+    font-weight: var(--font-weight-3);
+    transition: background .3s ease;
+    margin-bottom: 2px;
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.img-wrapper .img-overlay {
+    position: absolute;
+    top: 0;
+    background: linear-gradient(155.72deg, rgba(15, 67, 171, 0.3) 1.4%, rgba(2, 177, 255, 0.3) 93.18%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.img-wrapper .approved-heart {
+    position: absolute;
+    background: #ffffff75;
+    right: 0;
+    border-radius: 0px 10px 0px 10px;
+    padding: 14px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.img-wrapper .approved-heart i {
+    color: var(--danger-color);
+    font-size: 20px;
+    font-weight: var(--font-weight-5);
+}
+
+.img-wrapper img {
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.img-wrapper h2 {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #fff;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img-wrapper p {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    bottom: 10px;
+    left: 0;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1;
+    color: #fff;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.img-wrapper p.hidden {
+    display: none;
+}
+
+
+
+
+
+.cardAnimation {
+    animation: RiseAnimation 0.4s ease-in-out forwards;
+}
+
+@keyframes RiseAnimation {
+    to {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+
+.spawnAnimation {
+    animation: RiseAnimation 0.8s ease-in-out forwards;
+}
+
+@keyframes RiseAnimation {
+    to {
+        opacity: 1;
+        transform: scale(20px);
+    }
+
+    from {
+        opacity: 0;
+        transform: scale(2px);
+    }
+}

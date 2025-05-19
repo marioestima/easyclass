@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Home</title>
+</head>s
+
+<body>
+    <%- include("./partials/homenav")%>
+        <main>
+            <%- include("./partials/sidebar" , {classname: " - TLP" })%>
+
+                <section class="materias-container">
+                    <div class="container">
+                        <%- include("./partials/materialCard", { username: "Professora Tania" , discipline: "tlp" ,
+                            summary: "Temas para revisao" , date: "a duas semanas" })%>
+                            <%- include("./partials/materialCard", { username: "Mario Estima" , discipline: "Tlp" ,
+                                summary: "Programacao Web" , date: "a um mes" })%>
+                                <%- include("./partials/materialCard", { username: "Paulo Goncalvez" , discipline: "Tlp"
+                                    , summary: "Variaveis" , date: "ontem" })%>
+                                    <%- include("./partials/materialCard", { username: "Emelia Bandessa" ,
+                                        discipline: "Tlp" , summary: "Modelo Logico" , date: "hoje" })%>
+                                        <%- include("./partials/materialCard", { username: "Pedro dos Santos" ,
+                                            discipline: "Tlp" , summary: "Banco de Dados" , date: "hoje" })%>
+                                            <%- include("./partials/materialCard", { username: "Maria Cachamanga" ,
+                                                discipline: "Tlp" , summary: "Linguagens de programacao" , date: "ontem"
+                                                })%>
+                    </div>
+                </section>
+        </main>
+        <script src="/assets/js/app.js"></script>
+        </main>
+</body>
+
+</html>

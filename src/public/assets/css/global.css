@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --default-color: #4e5463;
+    --sucess-color: #16ca1f;
+    --danger-color: #e7380ccc;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.171);
+    --normal-padding: 15px 10px;
+    --lg-padding: 20px 15px;
+    --roudend-border-radius: 50%;
+    --border-radius-50-px: 50px;
+    --normal-border-radius: 10px;
+    --font-family: 'Poppins', sans-serif;
+    --large-font: 30px;
+    --small-font: 20px;
+    --xs-font: 15px;
+    --font-weight-1: 400;
+    --font-weight-2: 500;
+    --font-weight-3: 600;
+    --font-weight-4: 800;
+    --font-weight-5: 900;
+    --text-color: #444343;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: #f5f5f5;
+    scroll-behavior: smooth;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media  (max-width: 800px) {
+    body {
+        background: initial;
+    }
+}
+
+h2,
+h1,
+p {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+button p {
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.hide {
+    display: none;
+}
+
+.spinner-grow.hidden {
+    display: none;
+}
+
+.spinner-grow {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    vertical-align: -0.125em;
+    animation: spin 0.75s linear infinite;
+    border-radius: 50%;
+    border: 0.25em solid #fff;
+    border-right-color: transparent;
+    border-width: 0.25em;
+}
+
+.visually-hidden {
+    opacity: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include("../partials/head", {title: "Login | EasyClass" })%>
+
+    <body>
+        <%- include("../partials/authnav", {appname: "EasyClass" , link: "Criar Conta" })%>
+            <main class="auth-container">
+                <section class="main-form">
+                    <div class="logo hide">
+                        <img src="/assets/images/logo.jpeg" alt="">
+                    </div>
+                    <h1>Login</h1>
+                    <form method="POST" id="login-form">
+                        <div class="form-group">
+                            <label for="input-email">Email</label>
+                            <input type="email" placeholder="insira o seu email" id="input-email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="input-password">Password</label>
+                            <input type="password" placeholder="insira o seu senha" id="input-password" required />
+                            <i class="fas fa-eye-slash icon-eye"></i>
+                        </div>
+                        <div class="login-button">
+                            <button type="submit" id="continueButton">
+                                <p> Inciar sessão</p>
+                                <div class="spinner-grow hidden" role="status" id="spinner">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
+                        </div>
+                        <span class="sign-up">
+                            <p>Ainda não tenho uma conta?</p> <a href="/signup">Criar conta</a>
+                        </span>
+                    </form>
+                </section>
+            </main>
+
+            <%- include("../partials/footer")%>
+                <script>
+                    const togglePassword = document.querySelector(".icon-eye");
+                    const inputPassword = document.getElementById("input-password");
+                    togglePassword.addEventListener("click", () => {
+                        if (inputPassword.type == "password") {
+                            inputPassword.type = "text";
+                            togglePassword.classList.replace("fa-eye-slash", "fa-eye");
+                        } else {
+                            inputPassword.type = "password";
+                            togglePassword.classList.replace("fa-eye", "fa-eye-slash");
+                        }
+                    });
+                </script>
+                <script src="/assets/js/login.js"></script>
+                <script src="/assets/js/fetch.js"></script>
+                <script src="/assets/js/spinner.js"></script>
+    </body>
+
+</html>
