@@ -2,23 +2,24 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const db = require("../config/database");
 
+
 require("dotenv").config();
 
-exports.renderLogin = function (req, res) {
+renderLogin = function (req, res) {
   res.render("auth/login", { title: "Login" });
 };
 
-exports.renderSignup = function (req, res) {
+renderSignup = function (req, res) {
   res.render("auth/signup", { title: "Cadastrar" });
 };
 
-exports.loginAuth = async function (req, res) {
+loginAuth = async function (req, res) {
   const { email, password } = req.body;
 
   try {
     const [rows] = await db.execute("SELECT * FROM users WHERE email = ?", [email]);
     const user = rows[0];
-    
+
     if (!user) {
       return res.status(401).json({ message: "Credenciais inválidas." });
     }
@@ -38,9 +39,12 @@ exports.loginAuth = async function (req, res) {
   }
 };
 
-exports.signUp = async function (req, res) {
+signUp = async (req, res) => {
   const { name, email, password, type } = req.body;
-
+  const file = req.file;
+  //todo verificar tipo de de usuario se for professor ou cordernador/admin ele tem de pagar 
+  // o documento validar e enviar para para documentos e posteriomente essa informacao para o 
+  // banco de dados
   try {
     const [existing] = await db.execute("SELECT id FROM users WHERE email = ?", [email]);
     if (existing.length > 0) {
@@ -57,3 +61,12 @@ exports.signUp = async function (req, res) {
     res.status(500).json({ message: "Erro ao cadastrar." });
   }
 };
+
+
+
+module.exports = {
+  renderLogin,
+  renderSignup,
+  loginAuth,
+  signUp
+}

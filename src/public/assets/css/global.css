@@ -30,7 +30,7 @@
 
 body {
     font-family: var(--font-family);
-    background: #f5f5f5;
+    background: #e6e5e5;
     scroll-behavior: smooth;
     height: 100vh;
     overflow: hidden;

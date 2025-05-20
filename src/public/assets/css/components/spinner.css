@@ -1,27 +1,39 @@
+/* Esconde o spinner quando necessário */
 .spinner-grow.hidden {
     display: none;
 }
 
-.d-none {
-    display: none;
-}
-
-.spinner-grow {
-    display: inline-block;
-    height: 1rem;
-    width: 1rem;
-    vertical-align: -0.125em;
-    animation: spin 0.75s linear infinite;
-    border-radius: 50%;
-    border: 0.25em solid #fff;
-    border-right-color: transparent;
-    border-width: 0.25em;
-}
-
+/* Mantém o comportamento de acessibilidade */
 .visually-hidden {
     opacity: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
 }
 
+/* Estilo melhorado do spinner */
+.spinner-grow {
+    width: 3rem;
+    height: 3rem;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #3498db; /* Azul vivo */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+/* Centraliza na tela */
+#spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+/* Animação de rotação */
 @keyframes spin {
     to {
         transform: rotate(360deg);

@@ -1,8 +1,8 @@
 const token = localStorage.getItem("token");
 
 const searchField = document.getElementById("search-value");
-const icone = document.getElementById("icon-search");
-const heartSpan = document.querySelectorAll(".approved-heart");
+const icon = document.getElementById("icon-search");
+const starSpan = document.querySelectorAll(".approved");
 const bellIcon = document.getElementById("toggleNotificationPanel");
 const notificationPanel = document.querySelector(".notification-panel");
 const closePanel = document.getElementById("close-panel");
@@ -29,11 +29,11 @@ const notLogout = document.querySelector(".continueBtn");
 const logOutBtn = document.querySelector(".logout");
 const settingsButton = document.querySelector(".settings");
 
-const materialNames = document.querySelectorAll("[data-name]"); // Definido para filtrar materiais
+const materialNames = document.querySelectorAll("[data-name]");
 
 document.addEventListener("DOMContentLoaded", function () {
-  searchField.addEventListener("focus", focusOn);
-  searchField.addEventListener("blur", bluerOn);
+  searchField.addEventListener("focus", showResultsContainer);
+  searchField.addEventListener("blur", showResultsContainer);
 
   bellIcon.addEventListener("click", toggleNotificationPanel);
   settingsButton.addEventListener("click", rendirectSettingsPage);
@@ -44,16 +44,42 @@ document.addEventListener("DOMContentLoaded", function () {
     { panel: sendMaterialPanel },
     { panel: joinClassPanel }
   ];
- 
+
   // VerifyIsAutheticated("/home");
 
   toggleNotificationAction();
+
+  async function updateResults(searchTerm) {
+    // os resultados tem de ser apresentados a medida que usuario digita
+    try {
+      const response = await fetch("http://localhost:5000/");
+      if (!response.ok)
+        console.log("internal server error", response.error);
+      const data = await response.json();
+
+      if (data) {
+        data.map((result) => {
+          ResultsContainer.innerHTML += `
+           <div class="result-items">
+                <span class="item">
+                    <p class="resutado">${results.name} - ${result.date}</p>
+                    <i class="fas fa-magnifying-glass"></i>
+                </span>
+            </div>
+          `.join("");
+        });
+        searchMaterial();
+      }
+    } catch (err) {
+      console.err("not match results :(", err);
+    }
+  }
 
   function searchMaterial() {
     const value = searchField.value.toLowerCase();
 
     materialNames.forEach((materialName) => {
-      if (materialName.textContent.toLowerCase().includes(value)) { // Corrigido: agora busca pelo conteúdo do nome
+      if (materialName.textContent.toLowerCase().includes(value)) {
         materialName.style.display = "flex";
       } else {
         materialName.style.display = "none";
@@ -63,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function activateOnlyThisOption(optionClass) {
     menuItemButtons.forEach(item => {
-      if (item.classList.contains(optionClass)) {  
+      if (item.classList.contains(optionClass)) {
       } else {
         item.classList.remove("active");
       }
@@ -86,22 +112,18 @@ document.addEventListener("DOMContentLoaded", function () {
     activateOnlyThisOption("");
   }
 
-  function focusOn() {
-    if (icone.classList.contains("bi-search")) {
-      icone.classList.replace("bi-search", "bi-trash");
-      ResultsContainer.classList.remove("hidden");
-      icone.style.color = "#fa4e41";
-      icone.addEventListener("click", () => searchField.value = "");
+  function showResultsContainer() {
+    if (icon.classList.contains("fa-magnifying-glass")) {
+      icon.classList.replace("fa-magnifying-glass", "fa-xmark");
+      ResultsContainer.classList.toggle("hidden");
+      icon.addEventListener("click", () => searchField.value = "");
+    } else if (icon.classList.contains("fa-xmark")) {
+      icon.classList.replace("fa-xmark", "fa-magnifying-glass");
+      ResultsContainer.classList.toggle("hidden");
     }
+    return null;
   }
 
-  function bluerOn() {
-    if (icone.classList.contains("bi-trash")) {
-      icone.classList.replace("bi-trash", "bi-search");
-      icone.style.color = "#444343";
-      ResultsContainer.classList.add("hidden");
-    }
-  }
 
   function toggleNotificationPanel() {
     notificationPanel.classList.toggle("hidden");
@@ -124,11 +146,10 @@ document.addEventListener("DOMContentLoaded", function () {
     el.addEventListener("mouseleave", () => description.classList.add("hidden"));
   });
 
-  heartSpan.forEach(item => {
+  starSpan.forEach(item => {
     item.addEventListener("click", () => {
-      const hearticone = item.querySelector("i");
-      hearticone.classList.toggle("bi-heart");
-      hearticone.classList.toggle("bi-heart-fill");
+      const starIcon = item.querySelector("i");
+      starIcon.classList.toggle("liked");
     });
   });
 
@@ -170,7 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isHidden) openOnlyThisPanel(joinClassPanel);
     else closeAllPanels();
   });
-
   // async function VerifyIsAutheticated(url) {
   //   try {
   //     const response = fetch(url, {

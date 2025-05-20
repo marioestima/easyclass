@@ -21,9 +21,8 @@ loginForm.addEventListener("submit", async function (event) {
         if (response.ok && data.token) {
             localStorage.setItem("token", data.token);
             window.location.href = "/home";
-        } else {
-            alert(data.message || "Falha no login.");
         }
+        alert(data.message || "Falha no login.");
 
     } catch (error) {
         console.error("Erro na requisição:", error);

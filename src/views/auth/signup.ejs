@@ -20,6 +20,8 @@
                         <span class="icon"><i class="fas fa-cog"></i></span>
                     </div>
                 </div>
+
+                <h2 class="hide">Selecione Qual e o seu nivel para site</h2>
             </section>
 
             <main class="auth-container hide">
@@ -65,7 +67,7 @@
                             </div>
                         </div>
 
-                        <div class="form-step">
+                        <div class="form-step final-field">
                             <div id="extra-fields"></div>
                             <div class="form-buttons">
                                 <button type="button" class="prev-btn">Voltar <i
@@ -89,24 +91,21 @@
                     </span>
                 </section>
             </main>
+            <script>
+                const togglePassword = document.querySelector(".icon-eye");
+                togglePassword.addEventListener("click", () => {
+                    if (inputPassword.type == "password") {
+                        inputPassword.type = "text";
+                        togglePassword.classList.toggle("fa-eye-slash");
+                    } else {
+                        inputPassword.type = "password";
+                        togglePassword.classList.toggle("fa-eye");
+                    }
+                });
+            </script>
 
-            <%- include("../partials/footer") %>
-                <script>
-                    const togglePassword = document.querySelector(".icon-eye");
-                    togglePassword.addEventListener("click", () => {
-                        if (inputPassword.type == "password") {
-                            inputPassword.type = "text";
-                            togglePassword.classList.toggle("fa-eye-slash");
-                        } else {
-                            inputPassword.type = "password";
-                            togglePassword.classList.toggle("fa-eye");
-                        }
-                    });
-                </script>
-
-                <!-- <script src="/assets/js/signup.js"></script> -->
-                <script src="/assets/js/fetch.js"></script>
-                <script src="/assets/js/forms.js"></script>
+            <script src="/assets/js/changeScreen.js"></script>
+            <script src="/assets/js/formSteps.js"></script>
     </body>
 
 </html>

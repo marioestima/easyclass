@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".level");
     const signUpForm = document.querySelector(".auth-container");
     const extraFields = document.getElementById("extra-fields");
+    const finalField = document.querySelector(".final-field");
 
     if (!extraFields) {
         console.error("Elemento #extra-fields não encontrado");
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         signUpForm.classList.remove("hide");
     }
 
-    function createField(labelText, inputType, inputName, placeholder, accept = '') {
+    function createField(labelText, inputType, inputName, placeholder, accept = "") {
         const formGroup = document.createElement("div");
         formGroup.classList.add("form-group");
 
@@ -37,49 +38,58 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addExtraFields(userType) {
-        extraFields.innerHTML = '';
-        if (userType === 'user-teacher') {
+        extraFields.innerHTML = "";
+        if (userType === "user-student") {
+            userType = "student";
+            localStorage.setItem("usertype", userType);
+            finalField?.remove();
+        }
+        else if (userType === "user-teacher") {
+            userType = "teacher";
             extraFields.appendChild(createField("Escola onde leciona", "text", "teacher_school", "Insira o nome da escola"));
             extraFields.appendChild(createField("Documento comprovatório", "file", "teacher_doc", "", ".pdf,.jpg,.jpeg,.png"));
-        } else if (userType === 'user-admin') {
+            localStorage.setItem("usertype", userType);
+        } else if (userType === "user-admin") {
+            userType = "admin";
             extraFields.appendChild(createField("Código da instituição", "text", "admin_code", "Insira o código fornecido"));
             extraFields.appendChild(createField("Documento de autorização", "file", "admin_doc", "", ".pdf,.jpg,.jpeg,.png"));
+            localStorage.setItem("usertype", userType);
         }
     }
 
 
     function nextStep() {
-        const steps = document.querySelectorAll('.form-step');
+        const steps = document.querySelectorAll(".form-step");
         if (currentStep < steps.length - 1) {
-            steps[currentStep].classList.remove('active');
+            steps[currentStep].classList.remove("active");
             currentStep++;
-            steps[currentStep].classList.add('active');
+            steps[currentStep].classList.add("active");
         }
     }
 
 
     function prevStep() {
-        const steps = document.querySelectorAll('.form-step');
+        const steps = document.querySelectorAll(".form-step");
         if (currentStep > 0) {
-            steps[currentStep].classList.remove('active');
+            steps[currentStep].classList.remove("active");
             currentStep--;
-            steps[currentStep].classList.add('active');
+            steps[currentStep].classList.add("active");
         }
     }
 
     cards.forEach(card => {
-        card.addEventListener('click', () => {
-            selectedUserType = card.getAttribute('data-type');
+        card.addEventListener("click", () => {
+            selectedUserType = card.getAttribute("data-type");
             addExtraFields(selectedUserType);
             showSignUpForm();
         });
     });
 
-    document.querySelectorAll('.next-btn').forEach(button => {
-        button.addEventListener('click', nextStep);
+    document.querySelectorAll(".next-btn").forEach(button => {
+        button.addEventListener("click", nextStep);
     });
 
-    document.querySelectorAll('.prev-btn').forEach(button => {
-        button.addEventListener('click', prevStep);
+    document.querySelectorAll(".prev-btn").forEach(button => {
+        button.addEventListener("click", prevStep);
     });
 });

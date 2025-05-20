@@ -3,6 +3,25 @@
     gap: 40px;
 }
 
+@media (max-width: 800px) {
+    .user-level {
+        flex-direction: column;
+    }
+
+    .user-level h2 {
+        display: flex;
+        padding-top: 15px;
+        color: #424141;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .user-level .levels {
+        flex-direction: column;
+        gap: 5px !important;
+    }
+}
+
 .user-level .levels .level {
     background: #fff;
     padding: 50px 90px;
@@ -10,6 +29,15 @@
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.171);
     transition: all .4s ease;
+}
+
+@media (max-width: 800px) {
+
+    .user-level .levels .level {
+        flex-direction: column;
+        padding: 20px 10px;
+        gap: 5px !important;
+    }
 }
 
 .user-level .levels .level .icon {
@@ -90,5 +118,3 @@
 .level:hover {
     border-color: #3b3a3b;
 }
-
-
