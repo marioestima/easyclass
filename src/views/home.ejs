@@ -4,13 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <title>Home</title>
 </head>
 
 <body>
-    <%- include("./partials/homenav")%>
+
+
+    <!-- <div class="loader">
+        <div class="ring"></div>
+    </div> -->
+
+    <%- include("./partials/mainNavbar")%>
         <main>
             <%- include("./partials/sidebar" , {classname: " - TLP" })%>
 
@@ -32,8 +37,21 @@
                     </div>
                 </section>
         </main>
+        
         <script src="/assets/js/app.js"></script>
-        </main>
+        <script>
+            const loader = document.querySelector(".loader");
+            window.onload = () => {
+                setTimeout(function () {
+                    loader.style.opacity = "0";
+
+                    setTimeout(function () {
+                        loader.style.display = "none";
+                    }, 500);
+
+                }, 2000);
+            }
+        </script>
 </body>
 
 </html>

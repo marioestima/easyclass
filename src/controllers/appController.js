@@ -1,3 +1,5 @@
+const db = require("../config/database");
+
 renderHome = (req, res) => {
     res.render("home");
 };
@@ -5,6 +7,19 @@ renderHome = (req, res) => {
 renderSettings = (req, res) => {
     res.render("settings");
 };
+
+notFound = (req, res) => {
+    res.render("404");
+}
+
+getMaterialInformation = async function getMaterials(req, res) {
+    const [materials] = await db.execute("SELECT * FROM Subjects");
+
+    if (materials) res.status(200).json({ materials });
+    res.status(404).json({
+        message: "Nenhuma materia foi encontrada!"
+    });
+}
 
 uploadMaterial = async (req, res) => {
     try {
@@ -32,7 +47,7 @@ uploadMaterial = async (req, res) => {
             message: "Matéria e arquivo enviados com sucesso!",
             materia_id: materiaId
         });
-        
+
     } catch (err) {
         console.error("Erro ao enviar material:", error);
         res.status(500).json({ message: "Erro interno ao enviar material." });
@@ -40,8 +55,11 @@ uploadMaterial = async (req, res) => {
 }
 
 
+
 module.exports = {
     renderHome,
     renderSettings,
-    uploadMaterial
+    uploadMaterial,
+    getMaterialInformation,
+    notFound,
 }

@@ -11,6 +11,11 @@ router.get(
 );
 
 router.get(
+  "/404",
+  appController.notFound
+)
+
+router.get(
   "/settings",
   appController.renderSettings
 );

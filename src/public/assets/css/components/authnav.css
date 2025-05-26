@@ -16,6 +16,7 @@
 
 .header .nav {
     display: flex;
+    padding: 10px;
     justify-content: space-between;
 }
 
@@ -30,7 +31,7 @@
 
 .header .nav .logo {
     display: inline-block;
-    margin: 5px;
+ 
     display: flex;
     gap: 20px;
 }

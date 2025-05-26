@@ -2,8 +2,8 @@
  @import "./components/authnav.css";
  @import "./components/levels.css";
 
- 
- 
+
+
  :root {
      --text-color: #666666;
      --text-color-light: #999999;
@@ -141,19 +141,20 @@
      box-shadow: 0 0 0 3px var(--default-color);
  }
 
- .main-form .login-button {
+ /* .main-form .login-button {
      padding-top: 20px;
      display: flex;
      justify-content: center;
      align-items: center;
- }
+ } */
 
- .main-form .login-button button {
+ .main-form button {
      display: block;
+     margin-top: 20px;
      border: none;
      padding: 0.8rem 1.2rem;
      width: 100%;
-     border-radius: 0.4rem;
+     border-radius: 0.4rem !important;
      background: #141414;
      cursor: pointer;
      color: #fff;
@@ -163,7 +164,7 @@
  }
 
  @media (max-width: 800px) {
-     .main-form .login-button button {
+     .main-form button {
          border-radius: 50px;
          padding: 15px !important;
          cursor: pointer;
@@ -171,13 +172,13 @@
      }
  }
 
- .main-form .login-button button:disabled {
+ .main-form button:disabled {
      opacity: 0.5;
      cursor: wait;
  }
 
- .main-form .login-button button:hover,
- .main-form .login-button button:focus {
+ .main-form button:hover,
+ .main-form button:focus {
      outline: none;
      box-shadow: 0 0 0 3px #424040, 0 0 0 4px #141414;
  }

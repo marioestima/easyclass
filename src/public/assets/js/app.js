@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function updateResults(searchTerm) {
     // os resultados tem de ser apresentados a medida que usuario digita
     try {
-      const response = await fetch("http://localhost:5000/");
+      const response = await fetch("http://localhost:5000/materials");
       if (!response.ok)
         console.log("internal server error", response.error);
       const data = await response.json();

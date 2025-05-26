@@ -1,26 +1,27 @@
 const express = require("express");
 const router = express.Router();
-const authenticationController = require("../controllers/authController");
+const loginController = require("../controllers/loginController");
+const signUpController = require("../controllers/signUpController");
 
 
 router.get(
     "/login",
-    authenticationController.renderLogin
+    loginController.renderLogin
 );
 
 router.get(
     "/signup",
-    authenticationController.renderSignup
+    signUpController.renderSignup
 );
 
 router.post(
     "/signup",
-    authenticationController.signUp
+    signUpController.signUp
 );
 
 router.post(
     "/login",
-    authenticationController.loginAuth
+    loginController.login
 );
 
 
