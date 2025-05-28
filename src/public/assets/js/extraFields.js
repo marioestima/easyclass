@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".level");
     const signUpForm = document.querySelector(".auth-container");
     const extraFields = document.getElementById("extra-fields");
-    const finalField = document.querySelector(".final-field");
+ 
 
     if (!extraFields) {
         console.error("Elemento #extra-fields não encontrado");
@@ -17,6 +17,17 @@ document.addEventListener("DOMContentLoaded", function () {
         userTypeSelection.classList.add("hide");
         signUpForm.classList.remove("hide");
     }
+
+
+    levels.forEach(level => {
+        level.addEventListener("click", () => {
+            levels.forEach(l => l.classList.remove("selected"));
+            level.classList.add("selected");
+            selectedUserType = level.getAttribute("data-type");
+            authContainer.classList.remove("hide");
+            userTypeSelectedSpan.textContent = selectedUserType.charAt(0).toUpperCase() + selectedUserType.slice(1);
+        });
+    });
 
     function createField(labelText, inputType, inputName, placeholder, accept = "") {
         const formGroup = document.createElement("div");
@@ -42,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userType === "user-student") {
             userType = "student";
             localStorage.setItem("usertype", userType);
-            finalField?.remove();
         }
         else if (userType === "user-teacher") {
             userType = "teacher";
@@ -67,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
     function prevStep() {
         const steps = document.querySelectorAll(".form-step");
         if (currentStep > 0) {
@@ -84,11 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
             showSignUpForm();
         });
     });
-
     document.querySelectorAll(".next-btn").forEach(button => {
         button.addEventListener("click", nextStep);
     });
-
     document.querySelectorAll(".prev-btn").forEach(button => {
         button.addEventListener("click", prevStep);
     });

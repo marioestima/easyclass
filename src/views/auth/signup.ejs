@@ -7,20 +7,20 @@
 
             <section class="user-level">
                 <div class="levels">
-                    <div class="level user-student" data-type="user-student">
+                    <div class="level user-student" data-type="student">
                         <h2>Estudante</h2>
                         <span class="icon"><i class="fas fa-book"></i></span>
                     </div>
-                    <div class="level user-teacher" data-type="user-teacher">
+                    <div class="level user-teacher" data-type="teacher">
                         <h2>Professor</h2>
                         <span class="icon"><i class="fas fa-user-check"></i></span>
                     </div>
-                    <div class="level user-admin" data-type="user-admin">
+                    <div class="level user-admin" data-type="admin">
                         <h2>Coordenador de Turma</h2>
                         <span class="icon"><i class="fas fa-cog"></i></span>
                     </div>
                 </div>
-                <h2 class="hide">Selecione Qual e o seu nivel para site</h2>
+                <h2 class="hide">Selecione Qual é o seu nível para site</h2>
             </section>
 
             <main class="auth-container hide">
@@ -41,11 +41,12 @@
                                 </div>
                             </div>
                             <div class="form-buttons">
-                                <button type="button" class="next-btn">Próximo <i
+                                <button type="button" class="next-btn sign-up">Próximo <i
                                         class="fas fa-angles-right"></i></button>
                             </div>
                         </div>
 
+                        <!-- Step 2 -->
                         <div class="form-step">
                             <div class="grid-input">
                                 <div class="form-group">
@@ -56,30 +57,33 @@
                                     <label for="password">Senha</label>
                                     <input type="password" name="password" placeholder="Insira a sua senha"
                                         id="input-password" required />
-                                    <i class="fas fa-eye icon-eye" id="toggle-password"></i>
+                                    <i class="fas fa-eye icon-eye" id="toggle-password" style="cursor:pointer;"></i>
                                 </div>
                             </div>
                             <div class="form-buttons">
-                                <button type="button" class="prev-btn">Voltar<i class="fa fa-angles-left"></i></button>
-                                <button type="button" class="next-btn">Próximo <i
-                                        class="fas fa-angles-right"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="form-step final-field">
-                            <div id="extra-fields"></div>
-                            <div class="form-buttons">
-                                <button type="button" class="prev-btn">Voltar <i
-                                        class="fas fa-angles-left"></i></button>
-                                <button type="button" class="next-btn">Proximo <i
+                                <button type="button" class="prev-btn sign-up"><i class="fa fa-angles-left"></i>
+                                    Voltar</button>
+                                <button type="button" class="next-btn sign-up">Próximo <i
                                         class="fas fa-angles-right"></i></button>
                             </div>
                         </div>
 
                         <div class="form-step">
-                            <p>Clique em Cadastrar para a criacao da sua conta.</p>
+                            <div id="extra-fields">
+                                <p><strong>Tipo selecionado:</strong> <span id="user-type-selected"></span></p>
+                            </div>
                             <div class="form-buttons">
-                                <button type="submit">Cadastrar</button>
+                                <button type="button" class="prev-btn sign-up"><i class="fas fa-angles-left"></i>
+                                    Voltar</button>
+                                <button type="button" class="next-btn sign-up">Próximo <i
+                                        class="fas fa-angles-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <p>Clique em Cadastrar para a criação da sua conta.</p>
+                            <div class="form-buttons">
+                                <button class="sign-up" type="submit">Cadastrar</button>
                             </div>
                         </div>
                     </form>
@@ -90,10 +94,10 @@
                     </span>
                 </section>
             </main>
-             
+
+            <script src="/assets/js/extraFields.js"></script>
             <script src="/assets/js/changeScreen.js"></script>
             <script src="/assets/js/signup.js"></script>
-            <script src="/assets/js/formSteps.js"></script>
     </body>
 
 </html>

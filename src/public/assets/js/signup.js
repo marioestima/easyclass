@@ -1,43 +1,63 @@
-const togglePassword = document.querySelector(".icon-eye");
-const signUpForm = document.getElementById("sign-up");
-const informedUserType = localStorage.getItem("usertype");
+const levels = document.querySelectorAll(".level");
+const authContainer = document.querySelector(".auth-container");
+const userTypeSelectedSpan = document.getElementById("user-type-selected");
+let selectedUserType = null;
 
+ 
+// Toggle senha
+const togglePassword = document.getElementById("toggle-password");
+const inputPassword = document.getElementById("input-password");
 
 togglePassword.addEventListener("click", () => {
-    if (inputPassword.type == "password") {
+    if (inputPassword.type === "password") {
         inputPassword.type = "text";
-        togglePassword.classList.toggle("fa-eye-slash");
+        togglePassword.classList.add("fa-eye-slash");
+        togglePassword.classList.remove("fa-eye");
     } else {
         inputPassword.type = "password";
-        togglePassword.classList.toggle("fa-eye");
+        togglePassword.classList.remove("fa-eye-slash");
+        togglePassword.classList.add("fa-eye");
     }
 });
 
-signUpForm.addEventListener("submit", async function (event) {
+// Submissão do formulário
+form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    try {
-        const formData = new FormData(signUpForm);
-        formData.append("usertype", informedUserType);
 
-        const response = await fetch("http://localhost:5000/signup", {
+    if (!selectedUserType) {
+        alert("Por favor, selecione o seu nível antes de cadastrar.");
+        return;
+    }
+
+ 
+    const formData = new FormData(form);
+    formData.append("usertype", selectedUserType);
+
+ 
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    try {
+        const response = await fetch("/signup", {
             method: "POST",
             headers: {
-                "Content-Type": "Application/json"
+                "Content-Type": "application/json"
             },
-            body: formData
+            body: JSON.stringify(data)
         });
 
-        const data = await response.json();
-        console.log("server response:", data);
+        const result = await response.json();
 
         if (response.ok) {
+            alert("Cadastro realizado com sucesso!");
             window.location.href = "/login";
         } else {
-            alert(data.message || "Erro interno no servidor :(");
+            alert(result.message || "Erro interno no servidor.");
         }
-
-    } catch (err) {
-        console.error("Erro na requisição:", err);
-        alert("Erro ao registrar o usuário");
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+        alert("Erro ao registrar o usuário.");
     }
 });

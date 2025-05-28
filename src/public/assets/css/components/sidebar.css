@@ -10,7 +10,7 @@ main .sidebar {
 }
 
 @media (max-width: 700px) {
-    .sidebar {
+    main .sidebar {
         margin: 0px !important;
         display: block;
         position: fixed !important;
@@ -18,15 +18,56 @@ main .sidebar {
         bottom: 0;
         left: 0;
         right: 0;
-        border-radius: initial;
+        height: 60px !important;
+        border-radius: initial !important;
         z-index: 100;
+        border-top: 1px solid #ccc;
     }
-    main .sidebar .menu  {
-        display: block !important;
-        height: 20px !important;
+
+    main .sidebar .menu {
+        flex-direction: initial !important;
+        height: 0px !important;
     }
+
+    .menu-container .menu-items {
+        padding-top: 5px;
+        position: initial !important;
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .user-img img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50px !important;
+        cursor: pointer;
+    }
+
+    .user-img {
+        display: flex;
+        height: 50px;
+        width: 50px;
+        position: relative;
+        cursor: pointer;
+        justify-content: center;
+        border-radius: 50px !important;
+        align-items: center;
+    }
+
+    .user-img::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 50px !important;
+        background: linear-gradient(to right, #9bacf977, #9599e275);
+        z-index: 1;
+    }
+
+
     .menu-container .menu-items li {
         border: none;
+        width: 10px;
         display: inline-block;
     }
 
@@ -38,20 +79,42 @@ main .sidebar {
         display: none;
     }
 
-    main .sidebar .menu .menu-items {
-       
-    }
-
     .menu-container .menu-items li.active {
-        background-color: transparent !important;
+        background: none !important;
     }
 
     .menu-container .menu-items li.active::before {
+        /* bottom: 0 !important;
+        height: 10px !important; */
         display: none;
     }
 
+    .menu-items .item {
+        display: flex;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+ 
+
+    .join-class-button {
+        position: absolute;
+        bottom: 20px;
+        display: flex;
+        justify-content: center;
+        /* padding-top: 20px !important;
+        padding-bottom: 20px !important; */
+        background-color: var(--default-color);
+        border-radius: 90px;
+    }
+
+    .join-class-button i {
+        padding: 0px !important;
+        color: #fff !important;
+    }
+
     .menu-container .menu-items li:hover {
-        background-color: transparent !important;
+        background-color: var(--default-color) !important;
+        transition: background .3s ease;
     }
 
     .menu-container .menu-items li a {
@@ -86,7 +149,6 @@ main .sidebar .menu .menu-items {
     top: 50px;
     width: 100%;
     list-style: none;
-    display: flex;
     flex-direction: column;
     gap: 10px;
     padding-left: 5px;

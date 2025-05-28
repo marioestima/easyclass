@@ -1,11 +1,11 @@
-const token = localStorage.getItem("token");
+
 
 const searchField = document.getElementById("search-value");
 const icon = document.getElementById("icon-search");
 const starSpan = document.querySelectorAll(".approved");
 const bellIcon = document.getElementById("toggleNotificationPanel");
 const notificationPanel = document.querySelector(".notification-panel");
-const closePanel = document.getElementById("close-panel");
+const closeNotificationPanel = document.querySelector(".close-notification-panel");
 const ResultsContainer = document.querySelector(".search-results");
 
 const closeCreate = document.querySelector(".close-create-class");
@@ -19,7 +19,9 @@ const toggleSendMaterialButton = document.querySelector(".send-material-button")
 const closeMaterialPanel = document.querySelector(".close-send-material");
 
 const imageWrapper = document.querySelectorAll(".img-wrapper");
-const menuItemButtons = document.querySelectorAll(".menu-container .menu-item li");
+
+
+const menuItemButtons = document.querySelectorAll(".menu-container .menu-items .item");
 
 const treeDotsNotificationOption = document.querySelectorAll(".action");
 const notificationAction = document.querySelectorAll(".notification");
@@ -35,61 +37,27 @@ document.addEventListener("DOMContentLoaded", function () {
   searchField.addEventListener("focus", showResultsContainer);
   searchField.addEventListener("blur", showResultsContainer);
 
-  bellIcon.addEventListener("click", toggleNotificationPanel);
+  closeNotificationPanel.addEventListener("click", toggleNotificationPanel);
   settingsButton.addEventListener("click", rendirectSettingsPage);
   closeMaterialPanel.addEventListener("click", closeAllPanels);
   closeJoin.addEventListener("click", closeAllPanels);
+  const token = localStorage.getItem("token");
 
   const panels = [
     { panel: sendMaterialPanel },
-    { panel: joinClassPanel }
+    { panel: joinClassPanel },
+    { panel: notificationPanel }
   ];
 
-  // VerifyIsAutheticated("/home");
-
+  VerifyIsAutheticated();
   toggleNotificationAction();
 
-  async function updateResults(searchTerm) {
-    // os resultados tem de ser apresentados a medida que usuario digita
-    try {
-      const response = await fetch("http://localhost:5000/materials");
-      if (!response.ok)
-        console.log("internal server error", response.error);
-      const data = await response.json();
 
-      if (data) {
-        data.map((result) => {
-          ResultsContainer.innerHTML += `
-           <div class="result-items">
-                <span class="item">
-                    <p class="resutado">${results.name} - ${result.date}</p>
-                    <i class="fas fa-magnifying-glass"></i>
-                </span>
-            </div>
-          `.join("");
-        });
-        searchMaterial();
-      }
-    } catch (err) {
-      console.err("not match results :(", err);
-    }
-  }
-
-  function searchMaterial() {
-    const value = searchField.value.toLowerCase();
-
-    materialNames.forEach((materialName) => {
-      if (materialName.textContent.toLowerCase().includes(value)) {
-        materialName.style.display = "flex";
-      } else {
-        materialName.style.display = "none";
-      }
-    });
-  }
 
   function activateOnlyThisOption(optionClass) {
     menuItemButtons.forEach(item => {
       if (item.classList.contains(optionClass)) {
+        item.classList.add("active");
       } else {
         item.classList.remove("active");
       }
@@ -105,6 +73,24 @@ document.addEventListener("DOMContentLoaded", function () {
         panel.classList.add("hidden");
       }
     });
+  }
+
+  async function updateMaterial() {
+    try {
+      const response = await fetch("http://localhost:5000/home");
+      const data = await response.json();
+
+      if (response.ok) {
+        if (data)
+          return data.message;
+        if (data === "")
+          return data.message;
+      } else {
+        console.log("Erro do servidor");
+      }
+    } catch (err) {
+      console.error("Erro nao foi possivel localizar materials", err);
+    }
   }
 
   function closeAllPanels() {
@@ -172,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
   notLogout.addEventListener("click", () => {
     logOutAlert();
   });
+
   logOutAccepted.addEventListener("click", () => {
     rendirectLoginPage("/login");
   });
@@ -191,24 +178,30 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isHidden) openOnlyThisPanel(joinClassPanel);
     else closeAllPanels();
   });
-  // async function VerifyIsAutheticated(url) {
-  //   try {
-  //     const response = fetch(url, {
-  //       method: "GET",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       }
-  //     });
-  //     const data = await response.json();
 
-  //     if (!response.ok)
-  //       throw new Error("Acesso negado! :(")
-  //     return data;
+  bellIcon.addEventListener("click", () => {
+    const isHidden = notificationPanel.classList.contains("hidden");
+    if (isHidden) openOnlyThisPanel(notificationPanel);
+    else closeAllPanels();
+  });
 
-  //   } catch (err) {
-  //     alert("Você precisa estar logado!");
-  //     console.error("Erro no servidor :( Tente novamente mais tarde!");
-  //     window.location.href = "/login";
-  //   }
-  // }
+
+  async function VerifyIsAutheticated() {
+    try {
+      const response = fetch("http://localhost:5000/home", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+      const data = await response.json();
+      if (!response.ok)
+        throw new Error("Acesso negado! :(", data)
+      return data;
+    } catch (err) {
+      alert("Você precisa estar logado!");
+      console.error("Erro no servidor :( Tente novamente mais tarde!");
+      window.location.href = "/login";
+    }
+  }
 });

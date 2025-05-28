@@ -3,7 +3,7 @@
         <h1>Menu</h1>
         <div class="menu-container">
             <ul class="menu-items">
-                <li class="active">
+                <li class="item active">
                     <a href="#">Materias</a>
                     <i class="fas fa-book-open-reader"></i>
                 </li>
@@ -27,6 +27,9 @@
                     <a href="#">terminar sessao</a>
                     <i class="fas fa-arrow-right-from-bracket"></i>
                 </li>
+                <div class="user-img hide">
+                    <img src="/assets/images/user.jpeg" alt="foto do usúario">
+                </div>
             </ul>
         </div>
     </div>
@@ -57,49 +60,64 @@
                 <div class="inputs">
                     <div class="form-group">
                         <label for="sumario">sumario</label>
-                        <input type="text" placeholder="sumario" />
+                        <input type="text" placeholder="sumario" name="summary" />
                     </div>
                     <div class="form-group">
                         <label for="sumario">disciplina</label>
-                        <input type="text" placeholder="disciplina" />
+                        <input type="text" placeholder="disciplina" name="discipline" />
                     </div>
                     <div class="form-group">
                         <label for="sumario">digite uma nota descritiva sobre a aula</label>
-                        <textarea type="text" placeholder="nota descritiva"></textarea>
+                        <textarea type="text" placeholder="nota descritiva" name="description"></textarea>
                     </div>
 
                     <div class="form-group">
                         <h2>Envie fotos e ficheiros referentes a aula</h2>
                         <label for="sumario"></label>
-                        <input type="file" placeholder="nota descritiva" />
+                        <!-- ele tem de permitir fotos e arquivos do tipo pdf 
+                         ele tem de permitiar e selecao de mais de um arquivo
+                         -->
+                        <input type="file" accept="" />
                     </div>
                 </div>
 
-                <button type="submit">enviar Material <i class="fas fa-check-double"></i></button>
+                <button type="submit">Enviar Materia a Turma <i class="fas fa-check"></i></button>
             </form>
+        </div>
+
+        <div class="relationed-files">
+            <h2>Lista de Ficheiros Relacionados</h2>
+
+            <ul class="file-list">
+                <li class="selected-file"><i class="fas fa-file-pdf"></i>file</li>
+                <li class="selected-file"><i class="fas fa-file-pdf"></i>file</li>
+                <li class="selected-file"><i class="fas fa-file-pdf"></i>file</li>
+                <li class="selected-file"><i class="fas fa-image"></i>file</li>
+                <li class="selected-file"><i class="fas fa-image"></i>file</li>
+                <li class="selected-file"><i class="fas fa-file-pdf"></i>file</li>
+            </ul>
         </div>
     </section>
 
     <section class="side join-class hidden cardAnimation">
         <div class="form-content">
             <h2>Junte-se a uma turma</h2>
-
             <span class="close-join-class">
                 <i class="fas fa-xmark"></i>
             </span>
-            <form id="join-class-form" id="join-class-form">
+            <form id="join-class-form">
                 <div class="inputs">
                     <div class="form-group">
                         <label for="nome turma">nome turma</label>
-                        <input type="text" placeholder="nome da turma" />
+                        <input type="text" placeholder="nome da turma" name="class_name" />
                     </div>
                     <div class="form-group">
                         <label for="link">invite link | link da turma - opcional</label>
-                        <input type="text" placeholder="link da turma" />
+                        <input type="text" placeholder="link da turma" name="class_link" />
                     </div>
                 </div>
 
-                <button type="submit">Juntar-me <i class="fas fa-check-double"></i></button>
+                <button type="submit">Juntar-me <i class="fas fa-check"></i></button>
             </form>
         </div>
     </section>

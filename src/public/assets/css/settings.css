@@ -1,4 +1,4 @@
-@import "../global.css";
+@import "./global.css";
 
 * {
     margin: 0;
@@ -16,7 +16,11 @@
     z-index: 100;
     margin: 2px;
 }
-
+@media screen and (max-width: 700px){
+    .header {
+        box-shadow: none !important;
+    }
+}
 
 .navbar {
     display: flex;
@@ -25,11 +29,25 @@
     justify-content: space-between;
 }
 
+@media screen and (max-width: 700) {
+    .navbar {
+        justify-content: initial;
+        box-shadow: none !important;
+    }
+}
+
+
 .navbar .user img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .navbar .user img {
+        display: none;
+    }
 }
 
 .navbar .nav-items {
@@ -43,6 +61,16 @@
     transition: all ease .3s;
 }
 
+@media (max-width: 700px) {
+    .navbar .nav-items .item {
+        background: none;
+    }
+
+    .navbar .nav-items .item p {
+        display: none;
+    }
+}
+
 .navbar .nav-items .item a {
     display: flex;
     color: #fff;
@@ -50,6 +78,14 @@
     align-items: center;
     gap: 10px;
 }
+
+@media (max-width: 700px) {
+    .navbar .nav-items .item a {
+        color: #000000;
+        font-size: 25px;
+    }
+}
+
 
 .navbar .nav-items .item:hover,
 .navbar .nav-items .item:focus {
@@ -72,12 +108,26 @@
 }
 
 
+@media (max-width: 700px) {
+    .navbar .subtitle h2 {
+        font-size: 25px;
+        margin-right: 22px;
+    }
+}
+
+
 .settings-section {
     display: flex;
     margin-top: 90px;
     justify-content: center;
     align-items: center;
-    min-width: 1010px;
+    width: 1010px;
+}
+
+@media (max-width: 700px) {
+    .settings-section {
+        width: 100% !important;
+    }
 }
 
 .settings-section .setting-options {
@@ -96,4 +146,24 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .settings-section .setting-option {
+        background: none;
+        width: 100%;
+        box-shadow: initial;
+        border-bottom: 1px solid #14141479;
+        border-radius: initial;
+        padding: 20px !important;
+    }
+
+
+    .settings-section .setting-option a,
+    i {
+        padding: 0px;
+        margin: 0px;
+        font-size: 25px;
+        color: var(--text-color);
+    }
 }

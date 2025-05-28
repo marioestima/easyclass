@@ -1,25 +1,33 @@
 const express = require("express");
 const router = express.Router();
+
 const appController = require("../controllers/appController");
-const { single } = require("../utils/multer");
-
-// const authMiddleware = require("../middlewares/auth");
+const materialController = require("../controllers/materialController");
+const contentModeration = require("../middlewares/contentModeration");
+const upload = require("../middlewares/upload");
 
 router.get(
-  "/home",
-  appController.renderHome
+    "/home",
+    appController.renderHome
 );
 
 router.get(
-  "/404",
-  appController.notFound
-)
-
-router.get(
-  "/settings",
-  appController.renderSettings
+    "/settings",
+    appController.renderSettings
 );
 
-// router.post("/upload", single("material"), userController.uploadMaterial);
+router.get(
+    "/home",
+    materialController.getMaterials
+);
+
+router.post(
+    "/upload",
+    contentModeration,
+    upload.single("material"),
+    materialController.uploadMaterial
+);
+
+
 
 module.exports = router;

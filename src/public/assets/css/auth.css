@@ -9,6 +9,16 @@
      --text-color-light: #999999;
  }
 
+
+ body {
+     /* background-image: url("../../assets/images/banner.jpeg") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important; */
+ }
+
+
+
  .auth-container {
      display: flex;
      position: relative;
@@ -17,7 +27,7 @@
      align-items: center;
      padding: 20px;
      width: 800px;
-     background: #fff;
+     background: #ffffff;
      border-radius: 0.4rem;
      box-shadow: var(--box-shadow);
  }
@@ -115,7 +125,7 @@
 
  .main-form .form-group input {
      border: 1px solid #eee;
-     border-radius: 0.4rem;
+     border-radius:2rem;
      display: block;
      width: 100%;
      padding: 15px;
@@ -141,26 +151,35 @@
      box-shadow: 0 0 0 3px var(--default-color);
  }
 
- /* .main-form .login-button {
-     padding-top: 20px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
- } */
+ 
 
- .main-form button {
+ .main-form button.login {
      display: block;
      margin-top: 20px;
      border: none;
      padding: 0.8rem 1.2rem;
      width: 100%;
-     border-radius: 0.4rem !important;
+     border-radius: 2rem !important;
      background: #141414;
      cursor: pointer;
      color: #fff;
      font-size: var(--xs-font);
      font-weight: var(--font-weight-3);
      transition: all .3s ease;
+ }
+
+ .main-form button.sign-up  {
+    display: block;
+    margin-top: 20px;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 2rem !important;
+    background: #141414;
+    cursor: pointer;
+    color: #fff;
+    font-size: var(--xs-font);
+    font-weight: var(--font-weight-3);
+    transition: all .3s ease;
  }
 
  @media (max-width: 800px) {
@@ -184,10 +203,23 @@
  }
 
  .error {
-     color: #f31;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: absolute;
+     right: 0;
+     top: 100px;
+     margin-right: 10px;
+     color: #ffffff;
+     background: #ff4a2a83;
+     padding: 20px;
+     border: 1px solid #f31;
+     border-right: 10px solid #f31;
+     border-radius: 5px;
      font-size: 0.875rem;
      margin-top: .25rem;
  }
+
 
  .main-form .sign-up {
      display: flex;

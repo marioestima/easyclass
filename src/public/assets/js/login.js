@@ -1,26 +1,22 @@
 const loginForm = document.getElementById("login-form");
-const loginBtntext = continueButton.querySelector("p");
-const spinnerLoader = document.querySelector(".spinner-grow");
-
-
-
-//essa funciolidade tem de ser integrada aqui
-//quando btn de login for clicado ira aparecer um  loader que ira carregar o home
-//assim que ele carregar... esse loader ira ficar dentro do botao.
+const errorLog = document.querySelector(".error");
 
 loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+
     try {
-
-        const formData = new FormData(loginForm);
-
         const response = await fetch("http://localhost:5000/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: formData
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
         });
 
         const data = await response.json();
@@ -28,14 +24,23 @@ loginForm.addEventListener("submit", async function (event) {
 
         if (response.ok && data.token) {
             localStorage.setItem("token", data.token);
-            window.location.href = "/home";
+            setTimeout(() => {
+                window.location.href = "http://localhost:5000/home";
+            }, 2000);
+        } else {
+            errorLog.innerText = data.message || "Falha no login.";
+            errorLog.classList.toggle("hide");
+            setTimeout(() => {
+                errorLog.classList.toggle("hide");
+            }, 2000);
         }
-        alert(data.message || "Falha no login.");
 
     } catch (error) {
         console.error("Erro na requisição:", error);
-        alert("Erro ao tentar fazer login.");
+        errorLog.innerText = "Erro ao tentar fazer login.";
+        errorLog.classList.toggle("hide");
+        setTimeout(() => {
+            errorLog.classList.toggle("hide");
+        }, 2000);
     }
 });
-
-
